@@ -1,37 +1,39 @@
-name: Deploy resume to GitHub Pages
+name: Build & Deploy vue-resume (daniel.passionflow.net)
 
 on:
-  workflow_dispatch:
   push:
-    branches:
-      - main
+    branches: [ main ]
 
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
-
     steps:
-      # Checkout the repository
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      # Setup Node.js
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
+          cache: npm
 
-      # Install dependencies
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
-      # Build the project
-      - name: Build project
+      - name: Build
         run: npm run build
 
-      # Deploy to GitHub pages
-      - name: Deploy to GitHub pages
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Add server host key
+        run: ssh-keyscan -H "$SSH_HOST" >> ~/.ssh/known_hosts
+        env:
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+
+      - name: Deploy via rsync
+        uses: burnett01/rsync-deployments@v7
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: dist
+          switches: -avz --delete
+          path: dist/
+          remote_path: /opt/passionflow_static/daniel/
+          remote_host: ${{ secrets.SSH_HOST }}
+          remote_user: ${{ secrets.SSH_USER }}
+          remote_key: ${{ secrets.SSH_KEY }}
