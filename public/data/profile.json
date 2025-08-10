@@ -4,23 +4,23 @@
 
     "locales": {
         "en": {
-            "credits": "Designed by <strong><a href='https://github.com/ryanbalieiro'>Ryan Balieiro</a></strong>",
+            "credits": "Designed by <strong><a href='https://github.com/ryanbalieiro'>Dan Dansen</a></strong>",
             "role": "UX Designer"
         },
 
         "es": {
-            "credits": "Hecho por <strong><a href='https://github.com/ryanbalieiro'>Ryan Balieiro</a></strong>",
+            "credits": "Hecho por <strong><a href='https://github.com/ryanbalieiro'>Dan Dansen</a></strong>",
             "role": "Designer de UX"
         },
 
         "fr": {
-            "credits": "Conçu par <strong><a href='https://github.com/ryanbalieiro'>Ryan Balieiro</a></strong>",
+            "credits": "Conçu par <strong><a href='https://github.com/ryanbalieiro'>Dan Dansen</a></strong>",
             "role": "Designer UX"
         },
 
         "zh": {
             "name": "罗伊谢帕德",
-            "credits": "设计：<strong><a href='https://github.com/ryanbalieiro'>Ryan Balieiro</a></strong>",
+            "credits": "设计：<strong><a href='https://github.com/ryanbalieiro'>Dan Dansen</a></strong>",
             "role": "用户体验设计师"
         }
     },
@@ -32,8 +32,8 @@
             "href": null,
             "locales": {
                 "en": {
-                    "value": "123 Main Street, Cupertino, CA 01234",
-                    "valueShort": "Cupertino – CA"
+                    "value": "Metereon 18",
+                    "valueShort": "Cyprus"
                 },
                 "es": {
                     "valueShort": "California – EE.UU."
